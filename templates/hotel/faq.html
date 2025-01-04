@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ Section</title>
+    {% load static %}
+    <style>
+        body {
+            background-image: url('{% static "image/Screenshot 2024-10-30 110649.png" %}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.7); /* Adds shadow to text for readability */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        .faq-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .faq-answer {
+            font-size: 1em;
+            color: #ccc;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block;
+            font-weight: bold;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+        }
+
+        .back-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.7);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+<div class="faq-container">
+    <h1>Frequently Asked Questions</h1>
+    {% for faq in faqs %}
+    <div class="faq-item">
+        <div class="faq-question">{{ faq.question }}</div>
+        <div class="faq-answer">{{ faq.answer }}</div>
+    </div>
+    {% endfor %}
+    <a href="{% url 'dashboard' %}" class="back-button">Back to Dashboard</a>
+</div>
+</body>
+</html>

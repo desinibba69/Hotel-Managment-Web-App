@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Customer</title>
+    {% load static %}
+    <style>
+        body {
+            background-image: url('{% static 'image/Screenshot 2024-10-30 110649.png' %}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.7); /* Adds shadow to text for readability */
+        }
+
+        /* Main content styling */
+        .content {
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .content h2 {
+            font-size: 2.5em;
+            margin-bottom: 1em;
+            color: #fff;
+        }
+
+        .content form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .content form input, .content form button {
+            padding: 12px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+        }
+
+        .content form input {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid #ffffff;
+        }
+
+        .content form input:focus {
+            outline: none;
+            border-color: #f2f2f2;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        }
+
+        .content form button {
+            background-color: #333;
+            color: white;
+            border: 1px solid #555;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .content form button:hover {
+            background-color: #444;
+        }
+
+        /* Navigation bar styling */
+        nav {
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            width: 100%;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px; /* Space between items */
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #ffffff; /* Change background on hover */
+            color: #333333; /* Change text color on hover */
+            border-radius: 5px; /* Rounded corners */
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li><a href="{% url 'add_room' %}">Add Room</a></li>
+        <li><a href="{% url 'list_rooms' %}">View Rooms</a></li>
+        <li><a href="{% url 'list_customers' %}">View Customers</a></li>
+    </ul>
+</nav>
+
+<div class="content">
+    <h2>Add a New Customer</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Customer</button>
+    </form>
+</div>
+</body>
+</html>
